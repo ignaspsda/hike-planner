@@ -5,11 +5,11 @@ import {ItemsService} from "../services/items.service";
 import {ValidateNumber} from "../shared/number.validator";
 
 @Component({
-  selector: 'app-trip-detail',
-  templateUrl: './trip-details.component.html',
-  styleUrls: ['./trip-details.component.css']
+  selector: 'app-hike-details',
+  templateUrl: './hike-details.component.html',
+  styleUrls: ['./hike-details.component.css']
 })
-export class TripDetailsComponent implements OnInit {
+export class HikeDetailsComponent implements OnInit {
   hikeDetailForm: FormGroup;
   seasons = ['Pavasaris', 'Vasara', 'Ruduo', 'Žiema'];
 

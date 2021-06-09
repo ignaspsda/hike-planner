@@ -1,20 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12 mb-3">
+  <div class="row ">
+    <div class="col-sm-12 mb-3 d-flex justify-content-center text-center">
       <form [formGroup]="hikeDetailForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <label for="hikeLength">Žygio ilgis (km)</label>
-          <input class="form-control w-25" id="hikeLength" type="number" formControlName="hikeLength">
+          <input class="form-control" id="hikeLength" type="number" formControlName="hikeLength">
           <span class="form-text" *ngIf="hikeDetailForm.get('hikeLength')?.touched && hikeDetailForm.get('hikeLength')?.hasError('invalidNumber')">Invalid number!</span>
         </div>
         <div class="mb-3">
           <label for="daysInHike">Kiek dienų užtruks žygis?</label>
-          <input id="daysInHike" type="number" class="form-control w-25" formControlName="daysOnHike">
+          <input id="daysInHike" type="number" class="form-control" formControlName="daysOnHike">
           <span class="form-text" *ngIf="hikeDetailForm.get('daysOnHike')?.touched && hikeDetailForm.get('daysOnHike')?.hasError('invalidNumber')">Invalid number!</span>
         </div>
         <div class="mb-3">
           <label for="season">Metų laikas</label>
-          <select id="season" class="form-select w-25" formControlName="season">
+          <select id="season" class="form-select" formControlName="season">
             <option [value]="season" *ngFor="let season of seasons">
               {{season}}
             </option>
