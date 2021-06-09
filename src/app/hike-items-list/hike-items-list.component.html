@@ -1,0 +1,8 @@
+<div class="col-sm-5">
+  <h5>Daiktai</h5>
+  <app-hike-item *ngFor="let item of items" [item]="item"></app-hike-item>
+</div>
+<div class="col-sm-5">
+  <h5>Maistas</h5>
+  <app-hike-food *ngFor="let food of foodForHike" [food]="food"></app-hike-food>
+</div>

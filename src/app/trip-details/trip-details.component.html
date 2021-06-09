@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 mb-3">
+      <form [formGroup]="hikeDetailForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="hikeLength">Žygio ilgis (km)</label>
+          <input class="form-control w-25" id="hikeLength" type="number" formControlName="hikeLength">
+        </div>
+        <div class="mb-3">
+          <label for="daysInHike">Kiek dienų užtruks žygis?</label>
+          <input id="daysInHike" type="number" class="form-control w-25" formControlName="daysInHike">
+        </div>
+        <div class="mb-3">
+          <label for="season">Metų laikas</label>
+          <select id="season" class="form-select w-25" formControlName="season">
+            <option [value]="season" *ngFor="let season of seasons">
+              {{season}}
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>
