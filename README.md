@@ -6,3 +6,4 @@ How to start app:
 
 How to use app:
 Enter a length of the hike, days spent in hike and select a season. You will get a results with items and food list which you will need in hike.
+The quantity of items and food depends on the duration of the hike.
