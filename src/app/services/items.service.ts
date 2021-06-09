@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Item} from "../models/item.model";
-import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
+  itemsForHike: Item[] = [];
 
   private items: Item[] = [
     new Item('Striukė nuo lietaus', ['Pavasaris', 'Vasara', 'Ruduo'], true, 1),
@@ -26,18 +26,17 @@ export class ItemsService {
   constructor() { }
 
   getItems(season: string, daysInHike: number): Item[] {
-    let itemsArray = this.items.filter(
-      (item: Item) => item.season.includes(season)
-    );
+    this.itemsForHike.length = 0;
+    this.items
+      .filter((item: Item) => item.season.includes(season))
+      .forEach(item => this.itemsForHike.push(Object.assign({}, item)));
 
-    console.log('Sintetinės kojinės_1: ' + itemsArray[1].quantity);
-
-    for (let i = 0; i < itemsArray.length; i++){
-      if(!itemsArray[i].unique){
-        itemsArray[i].quantity *= daysInHike;
+    for (let i = 0; i < this.itemsForHike.length; i++){
+      if(!this.itemsForHike[i].unique){
+        this.itemsForHike[i].quantity *= daysInHike;
       }
     }
-    console.log('Sintetinės kojinės_2: ' + itemsArray[1].quantity);
-    return itemsArray;
+    console.log(Math.floor(Math.random() * (this.itemsForHike.length + 1)));
+    return this.itemsForHike;
   }
 }

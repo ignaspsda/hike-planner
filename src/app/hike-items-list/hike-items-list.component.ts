@@ -14,16 +14,16 @@ export class HikeItemsListComponent implements OnInit {
   items: Item[] = [];
   foodForHike: Food[] = [];
   season: string = '';
-  daysInHike: number = 0;
+  daysOnHike: number = 0;
 
   constructor(private itemsService: ItemsService, private foodService: FoodService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.season = params['season'];
-      this.daysInHike = +params['days'];
-      this.items = this.itemsService.getItems(this.season, this.daysInHike);
-      this.foodForHike = this.foodService.getFood(this.daysInHike);
+      this.daysOnHike = +params['days'];
+      this.items = this.itemsService.getItems(this.season, this.daysOnHike);
+      this.foodForHike = this.foodService.getFood(this.daysOnHike);
     });
   }
 

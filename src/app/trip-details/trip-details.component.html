@@ -5,10 +5,12 @@
         <div class="mb-3">
           <label for="hikeLength">Žygio ilgis (km)</label>
           <input class="form-control w-25" id="hikeLength" type="number" formControlName="hikeLength">
+          <span class="form-text" *ngIf="hikeDetailForm.get('hikeLength')?.touched && hikeDetailForm.get('hikeLength')?.hasError('invalidNumber')">Invalid number!</span>
         </div>
         <div class="mb-3">
           <label for="daysInHike">Kiek dienų užtruks žygis?</label>
-          <input id="daysInHike" type="number" class="form-control w-25" formControlName="daysInHike">
+          <input id="daysInHike" type="number" class="form-control w-25" formControlName="daysOnHike">
+          <span class="form-text" *ngIf="hikeDetailForm.get('daysOnHike')?.touched && hikeDetailForm.get('daysOnHike')?.hasError('invalidNumber')">Invalid number!</span>
         </div>
         <div class="mb-3">
           <label for="season">Metų laikas</label>
@@ -18,7 +20,7 @@
             </option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="hikeDetailForm.invalid">Submit</button>
       </form>
     </div>
   </div>

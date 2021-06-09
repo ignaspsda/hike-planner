@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ItemsService} from "../services/items.service";
+import {ValidateNumber} from "../shared/number.validator";
 
 @Component({
   selector: 'app-trip-detail',
@@ -14,9 +15,9 @@ export class TripDetailsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private itemService: ItemsService, private route: ActivatedRoute, private router: Router) {
     this.hikeDetailForm = formBuilder.group({
-      hikeLength: formBuilder.control(100, Validators.required),
+      hikeLength: formBuilder.control(100, [Validators.required, ValidateNumber]),
       season: formBuilder.control(this.seasons[0], Validators.required),
-      daysInHike: formBuilder.control(1, Validators.required)
+      daysOnHike: formBuilder.control(1, [Validators.required, ValidateNumber])
     });
   }
 
@@ -25,7 +26,6 @@ export class TripDetailsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.hikeDetailForm.value.season);
-    this.router.navigate(['trip-items', this.hikeDetailForm.value.season, this.hikeDetailForm.value.daysInHike], {relativeTo: this.route});
+    this.router.navigate(['trip-items', this.hikeDetailForm.value.season, this.hikeDetailForm.value.daysOnHike], {relativeTo: this.route});
   }
 }
